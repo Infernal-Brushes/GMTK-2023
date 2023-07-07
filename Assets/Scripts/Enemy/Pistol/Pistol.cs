@@ -27,6 +27,8 @@ namespace GMTK2023.Enemy
                 foreach (PistolAim aim in aims)
                 {
                     PistolBullet bullet = Instantiate(_bulletPrefab, aim.Position, Quaternion.identity);
+                    aim.DestroySelf();
+                    yield return new WaitForSeconds(0.1f);
                     bullet.Throw();
                 }
             }

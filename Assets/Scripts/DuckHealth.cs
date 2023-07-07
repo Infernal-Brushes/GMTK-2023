@@ -10,6 +10,7 @@ namespace GMTK2023.Duck
        
         public void Die()
         {
+            gameObject.SetActive(false);
             _losePanel.SetActive(true);
             Time.timeScale = 0f;
             IsAlive = false;

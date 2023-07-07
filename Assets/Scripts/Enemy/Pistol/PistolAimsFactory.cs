@@ -9,9 +9,9 @@ namespace GMTK2023.Enemy
         [SerializeField] private PistolAim _aim;
         [SerializeField] private float _createOffset = 1.2f;
 
-        private Transform _duck;
+        private DuckMovement _duck;
 
-        public void Initialize(Transform duck)
+        public void Initialize(DuckMovement duck)
         {
             _duck = duck ? duck : throw new ArgumentNullException(nameof(duck));
         }
