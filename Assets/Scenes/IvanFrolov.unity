@@ -238,10 +238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58387de81ac553b409d5f0d6e1146a7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 0}
-  _horizontalSpeed: 0
-  _gravity: 0
-  _swingForce: 0
+  _rigidbody: {fileID: 995046601}
+  _horizontalSpeed: 3
+  _swingForce: 300
+  _maxVerticalVelocity: 10
 --- !u!1 &1233838391
 GameObject:
   m_ObjectHideFlags: 0
