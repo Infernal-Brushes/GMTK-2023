@@ -1,10 +1,11 @@
-﻿using GMTK2023.Enemy;
+﻿using GMTK2023.Duck;
+using GMTK2023.Enemy;
 using UnityEngine;
 
 public class DuckContainer : MonoBehaviour
 {
     [SerializeField] private DuckMovement _duckMovement;
-    
+    [SerializeField] private DuckHealth _duckHealth;
     [SerializeField] private PistolAimsFactory _pistolAimsFactory;
 
     private InputService _inputService;

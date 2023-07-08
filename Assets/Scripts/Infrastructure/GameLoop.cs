@@ -1,21 +1,22 @@
-﻿using UnityEngine;
+﻿using Duck;
+using UnityEngine;
 
+//Этот класс является циклом игры. У него есть 
 public class GameLoop : MonoBehaviour
 {
-    [SerializeField] private DuckContainer _duckPrefab;
     [SerializeField] private Transform _spawnPoint;
-    
-    private InputService _inputService;
-    private DuckContainer _duckContainer;
 
-    public void Initialize(InputService inputService)
+    private DuckFactory _duckFactory;
+    private DuckContainer _playerDuck;
+
+    public void Initialize(DuckFactory duckFactory)
     {
-        _inputService = inputService;
+        _duckFactory = duckFactory;
     }
 
+    //Этот метод будет вызван 1 раз, чтобы начать игровой цикл, в нашем случае это будет показ меню, катсцена
     public void Begin()
     {
-        _duckContainer = Instantiate(_duckPrefab, _spawnPoint);
-        _duckContainer.Initialize(_inputService);
+        _duckFactory.CreateDuck(_spawnPoint.position);
     }
 }
