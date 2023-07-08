@@ -9,16 +9,9 @@ namespace GMTK2023.Enemy
         [SerializeField] private PistolAim _aim;
         [SerializeField] private float _createOffset = 1.2f;
 
-        private DuckMovement _duck;
-
-        public void Initialize(DuckMovement duck)
+        public PistolAim[] CreateGroup(Transform duck)
         {
-            _duck = duck ? duck : throw new ArgumentNullException(nameof(duck));
-        }
-
-        public PistolAim[] CreateGroup()
-        {
-            PistolAim firstAim = Create();
+            PistolAim firstAim = Create(duck);
             PistolAim secondAim = CreateAimNear(firstAim.Position);
 
             return new PistolAim[]
@@ -28,9 +21,9 @@ namespace GMTK2023.Enemy
             };
         }
 
-        public PistolAim Create()
+        public PistolAim Create(Transform duck)
         {
-            return CreateAimNear(_duck.transform.position);
+            return CreateAimNear(duck.position);
         }
 
         private PistolAim CreateAimNear(Vector2 position)

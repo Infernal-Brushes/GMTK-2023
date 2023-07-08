@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class GameLoopUI : MonoBehaviour
 {
-    public Action Retry;
+    public event Action Retry;
     
     [SerializeField] private ResultsPanelUI _losePanelUI;
     [SerializeField] private ResultsPanelUI _winPanelUI;

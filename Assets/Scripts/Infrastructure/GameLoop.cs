@@ -6,7 +6,8 @@ using UnityEngine;
 public class GameLoop : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPoint;
-
+    [SerializeField] private WavesLoop _wavesLoop;
+    
     private DuckFactory _duckFactory;
     private DuckContainer _playerDuck;
     private GameLoopUI _ui;
@@ -24,6 +25,7 @@ public class GameLoop : MonoBehaviour
     {
         _ui.gameObject.SetActive(false);
         _playerDuck = _duckFactory.CreateDuck(_spawnPoint.position);
+        _wavesLoop.Initialize(_playerDuck.transform);
         _playerDuck.Health.Died += Lose;
         _virtualCamera.Follow = _playerDuck.transform;
         _virtualCamera.LookAt = _playerDuck.transform;

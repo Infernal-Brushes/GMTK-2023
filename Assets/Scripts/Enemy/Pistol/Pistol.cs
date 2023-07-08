@@ -1,40 +1,27 @@
 using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace GMTK2023.Enemy
 {
     public class Pistol : MonoBehaviour
     {
-        [SerializeField] private float _shootTime = 2f;
-        [SerializeField] private PistolAimsFactory _aimsFactory;
         [SerializeField] private PistolBullet _bulletPrefab;
-        
-        private void Start()
+        [SerializeField] private Aiming _aiming;
+    
+        private Transform _duck;
+
+        public void Initialize(Transform duck)
         {
-            StartCoroutine(Shoot());
+            _duck = duck;
         }
-
-        private IEnumerator Shoot()
+        
+        public IEnumerator Shoot()
         {
-            while (true)
-            {
-                yield return new WaitForSeconds(0.2f);
-                
-                PistolAim[] aims = Random.Range(0, 2) == 0 
-                    ? new[] { _aimsFactory.Create() } 
-                    : _aimsFactory.CreateGroup();
-
-                yield return new WaitForSeconds(_shootTime);
-
-                foreach (PistolAim aim in aims)
-                {
-                    PistolBullet bullet = Instantiate(_bulletPrefab, aim.Position, Quaternion.identity);
-                    aim.DestroySelf();
-                    yield return new WaitForSeconds(0.1f);
-                    bullet.Throw();
-                }
-            }
+            _aiming.Setup(new Vector2(0, -30), _duck.position);
+            yield return StartCoroutine(_aiming.PlayAiming());
+            PistolBullet bullet = Instantiate(_bulletPrefab, _duck.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
+            bullet.Throw();
         }
     }
 }

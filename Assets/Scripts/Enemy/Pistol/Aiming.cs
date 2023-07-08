@@ -7,7 +7,7 @@ namespace GMTK2023.Enemy
 {
     public class Aiming : MonoBehaviour
     {
-        public Action Pointed;
+        public event Action Pointed;
         
         [SerializeField] private GameObject _aimPoint;
         [Header("Parameters")]
@@ -31,7 +31,7 @@ namespace GMTK2023.Enemy
         {
             Setup(_startPointTransform.position, _destinationPointTransform.position);
         }
-        
+
         public void Setup(Vector2 startPoint, Vector2 destinationPoint)
         {
             var halfVector = ((destinationPoint - startPoint) / 2);
@@ -43,7 +43,7 @@ namespace GMTK2023.Enemy
             _subPoint2 = Vector2.Lerp(randomPoint, destinationPoint, Random.Range(0.1f, 0.9f));
             
             _destinationPoint = destinationPoint;
-            StartCoroutine(PlayAiming());
+            //StartCoroutine(PlayAiming());
         }
 
         public IEnumerator PlayAiming()
@@ -51,10 +51,10 @@ namespace GMTK2023.Enemy
             _aimPoint.transform.position = _startPoint;
             _currentPosition = _startPoint;
             float timer = 0;
-            float t = 0;
+        
             while (timer < _duration)
             {
-                t = timer / _duration;
+                var t = timer / _duration;
                 var nextPosition = GetAimPointPosition(t);
                 _currentPosition = Vector2.Lerp(_currentPosition, nextPosition, _movementSensitivity);
                 _aimPoint.transform.position = _currentPosition;
