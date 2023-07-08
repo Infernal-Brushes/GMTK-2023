@@ -5,13 +5,12 @@ namespace Enemy.Sniper
     /// <summary>
     /// Класс содержит методы, изменяющие анимацию снайпера
     /// </summary>
-    [RequireComponent(typeof(Animator))]
     public class SniperAnimator : MonoBehaviour
     {
         
         // TODO: Создать хэши для полей аниматора
 
-        private Animator _animator;
+        [SerializeField] private Animator _animator;
 
         public void StartWalking()
         {
