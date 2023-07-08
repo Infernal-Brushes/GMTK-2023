@@ -17,7 +17,7 @@ namespace GMTK2023.Enemy
         
         public IEnumerator Shoot()
         {
-            _aiming.Setup(new Vector2(0, -30), _duck.position);
+            _aiming.Setup(new Vector2(0, -25), _duck.transform);
             yield return StartCoroutine(_aiming.PlayAiming());
             PistolBullet bullet = Instantiate(_bulletPrefab, _duck.position, Quaternion.identity);
             yield return new WaitForSeconds(0.1f);

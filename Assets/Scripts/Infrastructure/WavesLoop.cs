@@ -18,6 +18,11 @@ public class WavesLoop : MonoBehaviour
         StartCoroutine(StartFirstWave());
     }
 
+    public void StopWaves()
+    {
+        StopAllCoroutines();
+    }
+
     private IEnumerator StartFirstWave()
     {
         int shotsCount = 0;

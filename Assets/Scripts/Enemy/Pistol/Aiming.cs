@@ -23,17 +23,19 @@ namespace GMTK2023.Enemy
         private Vector3 _startPoint;
         private Vector3 _subPoint1;
         private Vector3 _subPoint2;
-        private Vector3 _destinationPoint;
+        private Transform _target;
+       // private Vector3 _destinationPoint;
 
         private Vector3 _currentPosition;
 
         public void Setup()
         {
-            Setup(_startPointTransform.position, _destinationPointTransform.position);
+            //Setup(_startPointTransform.position, _destinationPointTransform.position);
         }
 
         public void Setup(Vector2 startPoint, Vector2 destinationPoint)
         {
+            _aimPoint.SetActive(false);
             var halfVector = ((destinationPoint - startPoint) / 2);
             var center = halfVector + startPoint;
             _startPoint = startPoint;
@@ -42,12 +44,27 @@ namespace GMTK2023.Enemy
             _subPoint1 = Vector2.Lerp(randomPoint, startPoint, Random.Range(0.1f, 0.9f));
             _subPoint2 = Vector2.Lerp(randomPoint, destinationPoint, Random.Range(0.1f, 0.9f));
             
-            _destinationPoint = destinationPoint;
+            //_destinationPoint = destinationPoint;
             //StartCoroutine(PlayAiming());
+        }
+
+        public void Setup(Vector2 startPoint, Transform target)
+        {
+            _aimPoint.SetActive(false);
+            var halfVector = (((Vector2)target.position - startPoint) / 2);
+            var center = halfVector + startPoint;
+            _startPoint = startPoint;
+            
+            var randomPoint = center + Random.insideUnitCircle * halfVector.magnitude * _offsetLevel;
+            _subPoint1 = Vector2.Lerp(randomPoint, startPoint, Random.Range(0.1f, 0.9f));
+            _subPoint2 = Vector2.Lerp(randomPoint, target.position, Random.Range(0.1f, 0.9f));
+            
+            _target = target;
         }
 
         public IEnumerator PlayAiming()
         {
+            _aimPoint.SetActive(true);
             _aimPoint.transform.position = _startPoint;
             _currentPosition = _startPoint;
             float timer = 0;
@@ -70,12 +87,13 @@ namespace GMTK2023.Enemy
                 yield return new WaitForEndOfFrame();
             }
             
+            _aimPoint.SetActive(false);
             Pointed?.Invoke();
         }
 
-        private Vector3 GetAimPointPosition(float t)
+        private Vector2 GetAimPointPosition(float t)
         {
-            var certainPoint = Bezier.GetPoint(_startPoint, _subPoint1, _subPoint2, _destinationPoint, t);
+            var certainPoint = Bezier.GetPoint(_startPoint, _subPoint1, _subPoint2, _target.position, t);
             var pointWithNoise = certainPoint + Random.insideUnitCircle * _jitterForce;
             return pointWithNoise;
         }

@@ -16,12 +16,18 @@ public class GameLoop : MonoBehaviour
     public void Initialize(CinemachineVirtualCamera virtualCamera, GameLoopUI ui, DuckFactory duckFactory)
     {
         _ui = ui;
+        _ui.Retry += StartGame;
         _virtualCamera = virtualCamera;
         _duckFactory = duckFactory;
     }
 
     //Этот метод будет вызван 1 раз, чтобы начать игровой цикл, в нашем случае это будет показ меню, катсцена
     public void Begin()
+    {
+        StartGame();
+    }
+
+    private void StartGame()
     {
         _ui.gameObject.SetActive(false);
         _playerDuck = _duckFactory.CreateDuck(_spawnPoint.position);
@@ -36,11 +42,13 @@ public class GameLoop : MonoBehaviour
         _ui.gameObject.SetActive(true);
         _ui.ShowResultsPanel(false);
         Destroy(_playerDuck.gameObject);
+        _wavesLoop.StopWaves();
     }
 
     private void Won()
     {
         _ui.gameObject.SetActive(true);
         _ui.ShowResultsPanel(true);
+        _wavesLoop.StopWaves();
     }
 }
