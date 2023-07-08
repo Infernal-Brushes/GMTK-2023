@@ -20,7 +20,10 @@ namespace GMTK2023.Enemy
             while (true)
             {
                 yield return new WaitForSeconds(0.2f);
-                PistolAim[] aims = Random.Range(0, 2) == 0 ? new[] { _aimsFactory.Create() } : _aimsFactory.CreateGroup();
+                
+                PistolAim[] aims = Random.Range(0, 2) == 0 
+                    ? new[] { _aimsFactory.Create() } 
+                    : _aimsFactory.CreateGroup();
 
                 yield return new WaitForSeconds(_shootTime);
 
