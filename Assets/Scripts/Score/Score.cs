@@ -27,7 +27,7 @@ namespace Statistics
             while (_duck.IsAlive)
             {
                 yield return new WaitForSeconds(1);
-                Decrease(100);
+                Decrease(10);
             }
         }
 
