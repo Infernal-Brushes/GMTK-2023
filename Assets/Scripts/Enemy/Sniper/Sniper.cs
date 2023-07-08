@@ -8,7 +8,7 @@ namespace Enemy.Sniper
     {
         [SerializeField] private SniperAim _aim;
         [SerializeField] private SniperAnimator _animator;
-        [SerializeField] private SniperMover _mover;
+        [SerializeField] private SniperMovement Movement;
         [SerializeField] private SniperShooter _shooter;
         [SerializeField] private Transform _gunTooltipTransform;
 
@@ -34,11 +34,11 @@ namespace Enemy.Sniper
         {
             while (true)
             { 
-                _mover.StartMoving();
+                Movement.StartMoving();
                 yield return new WaitForSeconds(Random.Range(_freeRoamTimeMin, _freeRoamTimeMax));
-                _mover.StopMoving();
+                Movement.StopMoving();
                 
-                _mover.StopMoving();
+                Movement.StopMoving();
                 _animator.MountForAim();
                 _aim.StartTracking(_duck);
                 yield return new WaitForSeconds(Random.Range(_aimingTimeMin, _aimingTimeMax));

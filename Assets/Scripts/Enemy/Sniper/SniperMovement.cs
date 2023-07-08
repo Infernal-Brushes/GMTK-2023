@@ -3,7 +3,7 @@ using Random = UnityEngine.Random;
 
 namespace Enemy.Sniper
 {
-    public class SniperMover : MonoBehaviour
+    public class SniperMovement : MonoBehaviour
     {
         [SerializeField] private float _movementVelocity;
         [SerializeField] private Rigidbody2D _rigidbody;

@@ -6,10 +6,10 @@ namespace Enemy.Sniper
     {
         [SerializeField] private Transform _graphicsContainerTransform;
 
-        public void SetDirection(int direction)
+        public void SetDirection(int horizontalDirection)
         {
             var previousScale = _graphicsContainerTransform.localScale;
-            previousScale.x = Mathf.Sign(direction) * Mathf.Abs(previousScale.x);
+            previousScale.x = Mathf.Sign(horizontalDirection) * Mathf.Abs(previousScale.x);
         }
     }
 }
