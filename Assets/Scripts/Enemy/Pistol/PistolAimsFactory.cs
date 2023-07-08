@@ -35,7 +35,8 @@ namespace GMTK2023.Enemy
 
         private PistolAim CreateAimNear(Vector2 position)
         {
-            return Instantiate(_aim, position + Random.insideUnitCircle * _createOffset, Quaternion.identity);
+            var aimPosition = position + Random.insideUnitCircle * _createOffset;
+            return Instantiate(_aim, aimPosition, Quaternion.identity);
         }
     }
 }
