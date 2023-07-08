@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace GMTK2023.Score
+namespace Statistics
 {
     public class ScoreView : MonoBehaviour
     {

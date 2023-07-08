@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace GMTK2023.Enemy
+namespace Enemy
 {
     public class Aiming : MonoBehaviour
     {

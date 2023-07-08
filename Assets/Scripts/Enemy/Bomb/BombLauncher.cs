@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemy.Bomb
+namespace Enemy
 {
     public class BombLauncher : MonoBehaviour
     {

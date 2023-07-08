@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace GMTK2023.Enemy
+namespace Enemy
 {
     public class Pistol : MonoBehaviour
     {
@@ -21,7 +21,7 @@ namespace GMTK2023.Enemy
             yield return StartCoroutine(_aiming.PlayAiming());
             PistolBullet bullet = Instantiate(_bulletPrefab, _duck.position, Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
-            bullet.Throw();
+            bullet.Explode();
         }
     }
 }

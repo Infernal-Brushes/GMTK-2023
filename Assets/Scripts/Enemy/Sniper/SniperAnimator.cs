@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemy.Sniper
+namespace Enemy
 {
     /// <summary>
     /// Класс содержит методы, изменяющие анимацию снайпера

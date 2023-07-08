@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
 
-namespace Enemy.Sniper
+namespace Enemy
 {
     public class SniperShooter : MonoBehaviour
     {
-
-        [SerializeField] private SniperBullet _bullet;
+        [SerializeField] private Bullet _bullet;
 
         public void Shoot(Vector2 from, Vector2 where)
         {
-            var bullet = Instantiate(_bullet.gameObject);
-            bullet.transform.position = from;
-            bullet.GetComponent<SniperBullet>().Initialize(from - where);
+            Bullet bullet = Instantiate(_bullet, from, Quaternion.identity);
+            bullet.Initialize((where - from).normalized);
         }
     }
 }

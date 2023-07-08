@@ -1,4 +1,4 @@
-﻿using GMTK2023.Enemy;
+﻿using Enemy;
 using UnityEditor;
 using UnityEngine;
 

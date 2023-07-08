@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 
-namespace GMTK2023.Duck
+namespace Duck
 {
     public class DuckHealth : MonoBehaviour
     {
-        public Action Died;
+        public event Action Died;
+        
         public bool IsAlive { get; private set; } = true;
        
         public void Die()

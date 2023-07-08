@@ -1,5 +1,5 @@
-﻿using GMTK2023.Duck;
-using GMTK2023.Enemy;
+﻿using Duck;
+using Enemy;
 using UnityEngine;
 
 public class DuckContainer : MonoBehaviour
