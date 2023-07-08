@@ -8,6 +8,8 @@ namespace GMTK2023.Enemy
     public class Aiming : MonoBehaviour
     {
         public event Action Pointed;
+
+        public Vector3 CurrentPoint => _currentPosition;
         
         [SerializeField] private GameObject _aimPoint;
         [Header("Parameters")]
