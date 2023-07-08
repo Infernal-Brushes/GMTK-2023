@@ -14,13 +14,19 @@ namespace GMTK2023.Score
             while (true)
             {
                 yield return new WaitForSeconds(1);
-                Add(10);
+                Decrease(10);
             }
         }
 
         public void Add(int count)
         {
             _count += count;
+            _view.Show(_count);
+        }
+        
+        public void Decrease(int count)
+        {
+            _count -= count;
             _view.Show(_count);
         }
     }
