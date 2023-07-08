@@ -10,12 +10,14 @@ public class Startup : MonoBehaviour
     [SerializeField] private InputService _inputService;
     [SerializeField] private GameLoop _gameLoop;
     [SerializeField] private DuckFactory _duckFactory;
+    [SerializeField] private GameLoopUI _gameLoopUI;
     
     
     void Start()
     {
         _duckFactory.Initialize(_inputService);
-        _gameLoop.Initialize(_duckFactory);
+        _gameLoopUI.Initialize();
+        _gameLoop.Initialize(_gameLoopUI, _duckFactory);
         _gameLoop.Begin();
     }
 }

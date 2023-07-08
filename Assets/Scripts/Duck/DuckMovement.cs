@@ -37,7 +37,6 @@ public class DuckMovement : MonoBehaviour
     public void ChangeDirection(float direction)
     {
         _direction = direction > 0 ? 1 : -1;
-        Debug.Log($"Direction was changed {direction}");
     }
     
     private void Swing()
@@ -46,10 +45,20 @@ public class DuckMovement : MonoBehaviour
             return;
         
         _isReadyToSwing = false;
+        MakeSwing();
+        _reloadSwingCoroutine = StartCoroutine(ReloadSwing());
+    }
+
+    private void MakeSwing()
+    {
         _rigidbody.AddForce(Vector2.up * _swingForce, ForceMode2D.Impulse);
         float verticalVelocity = Mathf.Clamp(_rigidbody.velocity.y, -_maxVerticalVelocity, _maxVerticalVelocity);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, verticalVelocity);
-        _reloadSwingCoroutine = StartCoroutine(ReloadSwing());
+    }
+
+    public void ForceSwing()
+    {
+        MakeSwing();
     }
 
     public IEnumerator ReloadSwing()

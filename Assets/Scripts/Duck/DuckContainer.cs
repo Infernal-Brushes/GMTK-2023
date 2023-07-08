@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class DuckContainer : MonoBehaviour
 {
+    public DuckMovement Movement => _duckMovement;
+    public DuckHealth Health => _duckHealth;
+    
     [SerializeField] private DuckMovement _duckMovement;
     [SerializeField] private DuckHealth _duckHealth;
-    [SerializeField] private PistolAimsFactory _pistolAimsFactory;
 
     private InputService _inputService;
     
@@ -14,6 +16,5 @@ public class DuckContainer : MonoBehaviour
     {
         _inputService = inputService;
         _duckMovement.Initialize(_inputService);
-        //_pistolAimsFactory.Initialize(_duckMovement);
     }
 }
