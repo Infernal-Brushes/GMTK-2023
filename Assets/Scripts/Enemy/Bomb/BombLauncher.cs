@@ -6,7 +6,7 @@ namespace Enemy.Bomb
     {
         [SerializeField] private Bomb _bombPrefab;
         [SerializeField] private HomingIndicator _homingIndicatorPrefab;
-        [SerializeField] private float _homingIndicatorVerticalOffset;
+        [SerializeField] private float _homingIndicatorOffsetY;
 
         [Space(10), Header("Горизонтальное отклонение от позиции игрока при спавне бомбы")]
         [SerializeField] private float _horizontalOffsetMin;
@@ -25,12 +25,14 @@ namespace Enemy.Bomb
             var horizontalOffset = Random.Range(_horizontalOffsetMin, _HorizontalOffsetMax);
             var bombX = duck.position.x + Random.Range(-1, 2) * horizontalOffset;
             bombX = Mathf.Clamp(bombX, screenDimensionsInWorldUnits.xMin, screenDimensionsInWorldUnits.xMax);
-            var bomb = Instantiate(_bombPrefab.gameObject);
-            bomb.transform.position = new Vector2(bombX, screenDimensionsInWorldUnits.yMax);
 
             var indicator = Instantiate(_homingIndicatorPrefab.gameObject);
-            var indicatorY = screenDimensionsInWorldUnits.yMin + _homingIndicatorVerticalOffset;
+            var indicatorY = screenDimensionsInWorldUnits.yMin + _homingIndicatorOffsetY;
             indicator.transform.position = new Vector2(bombX, indicatorY);
+            
+            var bomb = Instantiate(_bombPrefab.gameObject);
+            bomb.transform.position = new Vector2(bombX, screenDimensionsInWorldUnits.yMax);
+            bomb.GetComponent<Bomb>().Initialize(indicator.GetComponent<HomingIndicator>());
         }
         
     }

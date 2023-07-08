@@ -4,10 +4,8 @@ namespace Enemy.Bomb
 {
     public class HomingIndicator : MonoBehaviour
     {
-        /// <summary>
-        /// Этот метод вызывается событием аниматора.
-        /// </summary>
-        private void DestroySelf() =>
+        // Можно добавить анимацию исчезновения индикатора, но пока этот метод только удаляет его со сцены
+        public void DestroySelf() =>
             Destroy(gameObject);
     }
 }

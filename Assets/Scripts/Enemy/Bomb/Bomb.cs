@@ -10,15 +10,24 @@ namespace Enemy.Bomb
         [SerializeField] private BombExploder _exploder;
         [SerializeField] private float _descendingVelocity;
         [SerializeField] private float _damage;
+        
+        [Tooltip("Время до начала спуска снаряда")]
+        [SerializeField] private float _descentStartDelay;
 
-        private void Start()
+        private HomingIndicator _indicator;
+
+        public void Initialize(HomingIndicator indicator)
         {
-            _rigidbody.velocity = Vector2.down * Mathf.Abs(_descendingVelocity);
+            _indicator = indicator;
             StartCoroutine(Descend());
         }
 
         private IEnumerator Descend()
         {
+            yield return new WaitForSeconds(_descentStartDelay);
+            _rigidbody.velocity = Vector2.down * Mathf.Abs(_descendingVelocity);
+            _indicator.DestroySelf();
+            
             yield return new WaitUntil(() => !_spriteRenderer.isVisible);
             Destroy(gameObject);
         }
