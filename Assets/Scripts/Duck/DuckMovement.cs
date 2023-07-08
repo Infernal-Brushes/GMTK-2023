@@ -11,14 +11,16 @@ public class DuckMovement : MonoBehaviour
     [SerializeField] private float _maxVerticalVelocity;
     [SerializeField] private float _swingDelay;
 
+    private InputService _inputService;
     private Coroutine _reloadSwingCoroutine;
     private bool _isReadyToSwing;
     private int _direction;
 
     public void Initialize(InputService inputService)
     {
-        inputService.Swing += Swing;
-        inputService.FlyDirectionChanged += ChangeDirection;
+        _inputService = inputService;
+        _inputService.Swing += Swing;
+        _inputService.FlyDirectionChanged += ChangeDirection;
         _direction = 1;
         _isReadyToSwing = true;
     }
@@ -65,5 +67,11 @@ public class DuckMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(_swingDelay);
         _isReadyToSwing = true;
+    }
+
+    private void OnDestroy()
+    {
+        _inputService.Swing -= Swing;
+        _inputService.FlyDirectionChanged -= ChangeDirection;
     }
 }
