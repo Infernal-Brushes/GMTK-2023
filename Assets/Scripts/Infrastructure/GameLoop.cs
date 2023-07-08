@@ -1,4 +1,5 @@
-﻿using Duck;
+﻿using Cinemachine;
+using Duck;
 using UnityEngine;
 
 //Этот класс является циклом игры. У него есть 
@@ -9,10 +10,12 @@ public class GameLoop : MonoBehaviour
     private DuckFactory _duckFactory;
     private DuckContainer _playerDuck;
     private GameLoopUI _ui;
+    private CinemachineVirtualCamera _virtualCamera;
 
-    public void Initialize(GameLoopUI ui, DuckFactory duckFactory)
+    public void Initialize(CinemachineVirtualCamera virtualCamera, GameLoopUI ui, DuckFactory duckFactory)
     {
         _ui = ui;
+        _virtualCamera = virtualCamera;
         _duckFactory = duckFactory;
     }
 
@@ -22,6 +25,8 @@ public class GameLoop : MonoBehaviour
         _ui.gameObject.SetActive(false);
         _playerDuck = _duckFactory.CreateDuck(_spawnPoint.position);
         _playerDuck.Health.Died += Lose;
+        _virtualCamera.Follow = _playerDuck.transform;
+        _virtualCamera.LookAt = _playerDuck.transform;
     }
 
     private void Lose()

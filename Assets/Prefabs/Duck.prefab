@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -157,7 +157,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3275250155310111980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,7 +172,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duckMovement: {fileID: 909452957466222680}
   _duckHealth: {fileID: 4656584462346761480}
-  _pistolAimsFactory: {fileID: 0}
 --- !u!114 &909452957466222680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,4 +201,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355cd6e3b76443319c1d80178f734f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _losePanel: {fileID: 0}
