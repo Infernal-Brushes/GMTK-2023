@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duckMovement: {fileID: 909452957466222680}
+  _duckHealth: {fileID: 0}
+  _pistolAimsFactory: {fileID: 0}
 --- !u!114 &909452957466222680
 MonoBehaviour:
   m_ObjectHideFlags: 0

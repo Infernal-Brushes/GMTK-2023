@@ -14,6 +14,6 @@ public class DuckContainer : MonoBehaviour
     {
         _inputService = inputService;
         _duckMovement.Initialize(_inputService);
-        _pistolAimsFactory.Initialize(_duckMovement);
+        //_pistolAimsFactory.Initialize(_duckMovement);
     }
 }

@@ -30,9 +30,10 @@ public class DuckMovement : MonoBehaviour
         _rigidbody.velocity = new Vector2(_direction * _horizontalSpeed, _rigidbody.velocity.y);
     }
 
-    private void ChangeDirection(float direction)
+    public void ChangeDirection(float direction)
     {
         _direction = direction > 0 ? 1 : -1;
+        Debug.Log($"Direction was changed {direction}");
     }
     
     private void Swing()
