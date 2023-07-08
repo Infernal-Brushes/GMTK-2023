@@ -10,7 +10,7 @@ public class SideBorderCollisionDetector : MonoBehaviour
         if (other.gameObject.TryGetComponent<DuckMovement>(out var duckMovement) && direction != 0)
             duckMovement.ChangeDirection(direction);
         // TODO: По хорошему бы сделать, чтобы снайпер сам детектил, когда ему развернуться, да?
-        else if (other.gameObject.TryGetComponent<SniperMovement>(out var sniperMover))
-            sniperMover.NotifyDirectionChange();
+        else if (other.gameObject.TryGetComponent<SniperMovement>(out var sniperMovement))
+            sniperMovement.NotifyDirectionChange();
     }
 }

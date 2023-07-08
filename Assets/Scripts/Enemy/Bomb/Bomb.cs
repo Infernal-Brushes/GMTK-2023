@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using GMTK2023.Duck;
 using UnityEngine;
 
 namespace Enemy.Bomb
@@ -9,8 +10,7 @@ namespace Enemy.Bomb
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private BombExploder _exploder;
         [SerializeField] private float _descendingVelocity;
-        [SerializeField] private float _damage;
-        
+
         [Tooltip("Время до начала спуска снаряда")]
         [SerializeField] private float _descentStartDelay;
 
@@ -36,9 +36,8 @@ namespace Enemy.Bomb
         {
             if (!collision.gameObject.CompareTag("Player"))
                 return;
-
-            // TODO: Наносить утке урон
-            // collision.gameObject.GetComponent<DuckHealth>().ApplyDamage(_damage);
+            
+            collision.gameObject.GetComponent<DuckHealth>().Die();
             GetComponent<Collider2D>().enabled = false;
             _exploder.Explode();
         }

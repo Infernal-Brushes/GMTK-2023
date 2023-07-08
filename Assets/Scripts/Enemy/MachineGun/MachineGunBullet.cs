@@ -11,7 +11,6 @@ namespace Enemy.MachineGun
         [SerializeField] private ParticleSystem _particleSystem;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private float _verticalVelocity;
-        [SerializeField] private float _damage;
 
         private void Start()
         {
@@ -36,9 +35,8 @@ namespace Enemy.MachineGun
         {
             if (!other.CompareTag("Player"))
                 return;
-            
-            // TODO: Apply damage
-            // other.GetComponent<DuckHealth>().ApplyDamage(_damage);
+
+            other.GetComponent<DuckHealth>().Die();
 
             GetComponent<Collider2D>().enabled = false;
             StartCoroutine(BlowUp());

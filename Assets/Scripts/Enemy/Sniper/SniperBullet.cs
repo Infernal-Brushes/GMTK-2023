@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using GMTK2023.Duck;
+using UnityEngine;
 
 namespace Enemy.Sniper
 {
@@ -9,5 +11,11 @@ namespace Enemy.Sniper
 
         public void Initialize(Vector2 direction) =>
             _rigidbody.velocity = direction.normalized * _velocity;
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+                other.GetComponent<DuckHealth>().Die();
+        }
     }
 }
