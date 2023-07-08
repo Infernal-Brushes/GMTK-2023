@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GMTK2023.Enemy
 {
     public class Aiming : MonoBehaviour
     {
+        public Action Pointed;
+        
         [SerializeField] private GameObject _aimPoint;
         [Header("Parameters")]
         [SerializeField] private float _duration;
@@ -59,11 +63,14 @@ namespace GMTK2023.Enemy
             }
 
             var destinationPoint = GetAimPointPosition(1);
-            while (timer < _duration - _destinationThreshold)
+            while (Vector2.Distance(_currentPosition, destinationPoint) < - _destinationThreshold)
             {
                 _currentPosition = Vector2.Lerp(_currentPosition, destinationPoint, _movementSensitivity);
                 _aimPoint.transform.position = _currentPosition;
+                yield return new WaitForEndOfFrame();
             }
+            
+            Pointed?.Invoke();
         }
 
         private Vector3 GetAimPointPosition(float t)
