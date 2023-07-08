@@ -9,7 +9,10 @@ public class DuckMovement : MonoBehaviour
     [SerializeField] private float _horizontalSpeed;
     [SerializeField] private float _swingForce;
     [SerializeField] private float _maxVerticalVelocity;
-    
+    [SerializeField] private float _swingDelay;
+
+    private Coroutine _reloadSwingCoroutine;
+    private bool _isReadyToSwing;
     private int _direction;
 
     public void Initialize(InputService inputService)
@@ -17,6 +20,7 @@ public class DuckMovement : MonoBehaviour
         inputService.Swing += Swing;
         inputService.FlyDirectionChanged += ChangeDirection;
         _direction = 1;
+        _isReadyToSwing = true;
     }
 
     // Update is called once per frame
@@ -38,8 +42,19 @@ public class DuckMovement : MonoBehaviour
     
     private void Swing()
     {
+        if (!_isReadyToSwing)
+            return;
+        
+        _isReadyToSwing = false;
         _rigidbody.AddForce(Vector2.up * _swingForce, ForceMode2D.Impulse);
         float verticalVelocity = Mathf.Clamp(_rigidbody.velocity.y, -_maxVerticalVelocity, _maxVerticalVelocity);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, verticalVelocity);
+        _reloadSwingCoroutine = StartCoroutine(ReloadSwing());
+    }
+
+    public IEnumerator ReloadSwing()
+    {
+        yield return new WaitForSeconds(_swingDelay);
+        _isReadyToSwing = true;
     }
 }

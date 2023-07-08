@@ -10,7 +10,7 @@ public class Startup : MonoBehaviour
     [SerializeField] private InputService _inputService;
     [SerializeField] private GameLoop _gameLoop;
     [SerializeField] private DuckFactory _duckFactory;
-    [SerializeField] private PistolAimsFactory _pistolAimsFactory;
+    
     
     void Start()
     {
