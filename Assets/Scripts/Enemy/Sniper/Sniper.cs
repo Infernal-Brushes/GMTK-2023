@@ -34,6 +34,8 @@ namespace Enemy
 
         private IEnumerator Behave()
         {
+            yield return _animator.PlayFirstMovement();
+            
             while (true)
             {
                 _animator.StartWalking();

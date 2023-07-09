@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections;
 using Enemy;
-using GMTK2023.Enemy;
 using Statistics;
 using UnityEngine;
 
 public class WavesLoop : MonoBehaviour
 {
     [SerializeField] private Pistol _pistol;
-    [SerializeField] private Sniper _sniper;
-    [SerializeField] private Tank _tank;
+    [SerializeField] private Sniper _sniperPrefab;
+    [SerializeField] private MachineGun _machineGunPrefab;
+    [SerializeField] private Tank _tankPrefab;
     [SerializeField] private BombFactory _bombFactory;
     [SerializeField] private Score _score;
     [SerializeField] private int _shotsToStartNextWave = 5;
     [SerializeField] private float _betweenPistolShotsTime;
+    [SerializeField] private Rect _screenDimensionsInWorld;
 
     private Transform _duck;
 
@@ -29,15 +30,22 @@ public class WavesLoop : MonoBehaviour
             StartCoroutine(StartFirstWave());
 
         if (score == 2300)
-            _sniper.Initialize(_duck);
+        {
+            Sniper sniper = Instantiate(_sniperPrefab);
+            sniper.Initialize(_duck);
+        }
 
         if (score == 1800)
         {
-            //artillery
+            MachineGun machineGun = Instantiate(_machineGunPrefab);
+            machineGun.Initialize(_duck, _screenDimensionsInWorld);
         }
 
         if (score == 1200)
-            _tank.Initialize(_duck);
+        {
+            Tank tank = Instantiate(_tankPrefab);
+            tank.Initialize(_duck);
+        }
 
         if (score == 600)
             StartCoroutine(CreateBombs());
