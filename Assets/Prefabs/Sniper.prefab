@@ -552,6 +552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 7860787028953100492}
+  _sniperAnimator: {fileID: 7860787028953100492}
 --- !u!114 &7860787028953100528
 MonoBehaviour:
   m_ObjectHideFlags: 0
