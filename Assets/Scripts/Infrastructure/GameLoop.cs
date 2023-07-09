@@ -57,9 +57,10 @@ public class GameLoop : MonoBehaviour
     private void Lose()
     {
         _started = false;
-        _ui.gameObject.SetActive(true);
+        _ui.SetPanelVisibility(true);
         _ui.ShowResultsPanel(false);
-        _playerDuck.gameObject.SetActive(false);
+        Destroy(_playerDuck.gameObject);
+        _wavesLoop.StopWaves();
     }
 
     private void Retry()
