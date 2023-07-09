@@ -59,6 +59,7 @@ public class GameLoop : MonoBehaviour
         _started = false;
         _ui.SetPanelVisibility(true);
         _ui.ShowResultsPanel(false);
+        _wavesLoop.StopWaves();
     }
 
     private void Retry()

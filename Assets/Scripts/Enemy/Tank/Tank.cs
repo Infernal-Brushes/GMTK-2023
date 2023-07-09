@@ -10,13 +10,14 @@ namespace Enemy
         [SerializeField] private SniperShooter _shooter;
         [SerializeField] private Transform _gunTooltipTransform;
         [SerializeField] private GameObject _aimPrefab;
+        [SerializeField] private EnemyAnimator _animator;
         
         [Space(10), Header("Различные временные промежутки")] 
         [SerializeField] private float _freeRoamTimeMin;
         [SerializeField] private float _freeRoamTimeMax;
         
         private Transform _duck;
-        
+
         public void Initialize(Transform duck)
         {
             _duck = duck;
@@ -25,6 +26,8 @@ namespace Enemy
 
         private IEnumerator Behave()
         {
+            yield return _animator.PlayFirstMovement();
+
             while (true)
             {
                 _movement.StartMoving();

@@ -5,33 +5,30 @@ namespace Enemy
     /// <summary>
     /// Класс содержит методы, изменяющие анимацию снайпера
     /// </summary>
-    public class SniperAnimator : MonoBehaviour
+    public class SniperAnimator : EnemyAnimator
     {
-        [SerializeField] private Animator _animator;
-     
+        [SerializeField] private Animator _sniperAnimator;
+
         private readonly int _isWalking = Animator.StringToHash("IsWalking");
+        private readonly int _isAiming = Animator.StringToHash("ISAiming");
+        private readonly int _shoot = Animator.StringToHash("Shoot");
 
         public void StartWalking()
         {
-            _animator.SetBool(_isWalking, true);
+            _sniperAnimator.SetBool(_isAiming, false);
+            _sniperAnimator.SetBool(_isWalking, true);
         }
 
 
         public void MountForAim()
         {
-            _animator.SetBool(_isWalking, false);
-            Debug.Log("The sniper has mounted to aim!");
+            _sniperAnimator.SetBool(_isWalking, false);
+            _sniperAnimator.SetBool(_isAiming, true);
         }
 
         public void ExpressShoot()
         {
-            Debug.Log("The Sniper has made a shot!");
+            _sniperAnimator.SetTrigger(_shoot);
         }
-
-        public void Reload()
-        {
-            Debug.Log("The Sniper has reloaded!");
-        }
-
     }
 }

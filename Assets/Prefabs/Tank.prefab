@@ -292,13 +292,13 @@ GameObject:
   - component: {fileID: 7860787028953100492}
   - component: {fileID: 7549732549484517908}
   - component: {fileID: 7860787028953100530}
-  - component: {fileID: 7860787028953100529}
   - component: {fileID: 7860787028953100528}
   - component: {fileID: 7860787028953100535}
   - component: {fileID: 7860787028953100534}
   - component: {fileID: 7594391800951412799}
   - component: {fileID: 674137989204185073}
   - component: {fileID: 4982123618281927214}
+  - component: {fileID: 8202917504936373841}
   m_Layer: 7
   m_Name: Tank
   m_TagString: Untagged
@@ -314,7 +314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7860787028953100533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 11.38, y: -22.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -385,7 +385,7 @@ Animator:
   m_GameObject: {fileID: 7860787028953100533}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 124bbc4300b18da4fad5d9493a86adea, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -432,19 +432,6 @@ MonoBehaviour:
   _lineRenderer: {fileID: 8665221159955846692}
   _gunTipTransform: {fileID: 8859929064906576621}
   _armDirection: {x: 1, y: 0}
---- !u!114 &7860787028953100529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7860787028953100533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 287af9721e9b46f6aa722d1bf30bf8de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 7860787028953100492}
 --- !u!114 &7860787028953100528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,6 +490,7 @@ MonoBehaviour:
   _shooter: {fileID: 7860787028953100534}
   _gunTooltipTransform: {fileID: 8859929064906576621}
   _aimPrefab: {fileID: 3831321622091336243, guid: f3f5ced7ba75a9248aa964fb9f673c84, type: 3}
+  _animator: {fileID: 8202917504936373841}
   _freeRoamTimeMin: 3
   _freeRoamTimeMax: 5
 --- !u!82 &674137989204185073
@@ -627,3 +615,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.6732373, y: 2.22}
   m_EdgeRadius: 0
+--- !u!114 &8202917504936373841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7860787028953100533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96fa38d5b1274a0381e5dd4d0d3c6634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 7860787028953100492}

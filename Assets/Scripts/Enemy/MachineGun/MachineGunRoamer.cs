@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Enemy.MachineGun
+namespace Enemy
 {
     public class MachineGunRoamer : MonoBehaviour
     {
@@ -15,10 +15,10 @@ namespace Enemy.MachineGun
         private Coroutine _roamingCoroutine;
         private int _direction = 1;
 
-        public void Initialize(DuckMovement duck, Rect screenDimensionsInWorldUnits)
+        public void Initialize(Transform duck, Rect screenDimensionsInWorldUnits)
         {
             _screenDimensions = screenDimensionsInWorldUnits;
-            _duck = duck.transform;
+            _duck = duck;
         }
 
         public void StartRoaming()

@@ -2,7 +2,7 @@
 using Duck;
 using UnityEngine;
 
-namespace Enemy.MachineGun
+namespace Enemy
 {
     public class MachineGunBullet : MonoBehaviour
     {
