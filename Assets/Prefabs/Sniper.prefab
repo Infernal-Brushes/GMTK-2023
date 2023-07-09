@@ -516,7 +516,7 @@ MonoBehaviour:
   _animator: {fileID: 7860787028953100529}
   Movement: {fileID: 7860787028953100535}
   _shooter: {fileID: 7860787028953100534}
-  _gunTooltipTransform: {fileID: 0}
+  _gunTooltipTransform: {fileID: 7555006698300876112}
   _freeRoamTimeMin: 3
   _freeRoamTimeMax: 5
   _aimingTimeMin: 3

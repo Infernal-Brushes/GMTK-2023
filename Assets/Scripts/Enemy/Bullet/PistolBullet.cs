@@ -11,6 +11,7 @@ namespace Enemy
 
         public void Explode()
         {
+            Destroy(gameObject, 1.2f);
             int results = Physics2D.OverlapCircleNonAlloc(transform.position, _radius, _colliders);
 
             for (int i = 0; i < results; i++)
