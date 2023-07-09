@@ -13,14 +13,14 @@ public class GameLoop : MonoBehaviour
     private DuckFactory _duckFactory;
     private DuckContainer _playerDuck;
     private GameLoopUI _ui;
-    private CinemachineVirtualCamera _virtualCamera;
+    private Field _field;
 
     private bool _started;
 
-    public void Initialize(CinemachineVirtualCamera virtualCamera, GameLoopUI ui, DuckFactory duckFactory)
+    public void Initialize(Field field, GameLoopUI ui, DuckFactory duckFactory)
     {
         _ui = ui;
-        _virtualCamera = virtualCamera;
+        _field = field;
         _duckFactory = duckFactory;
         _ui.Play += StartGame;
         _ui.Retry += Retry;
@@ -41,6 +41,7 @@ public class GameLoop : MonoBehaviour
         _wavesLoop.Initialize(_playerDuck.transform);
         _score.Initialize(_playerDuck.Health);
         _playerDuck.Health.Died += Lose;
+        _field.SetupTarget();
         _virtualCamera.Follow = _playerDuck.transform;
         _virtualCamera.LookAt = _playerDuck.transform;
     }

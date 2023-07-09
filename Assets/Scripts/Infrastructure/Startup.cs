@@ -9,12 +9,12 @@ public class Startup : MonoBehaviour
     [SerializeField] private GameLoop _gameLoop;
     [SerializeField] private DuckFactory _duckFactory;
     [SerializeField] private GameLoopUI _gameLoopUI;
-    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
-    
+    [SerializeField] private Field _field;
+
     private void Start()
     {
         _duckFactory.Initialize(_inputService);
         _gameLoopUI.Initialize();
-        _gameLoop.Initialize(_virtualCamera, _gameLoopUI, _duckFactory);
+        _gameLoop.Initialize(_field, _gameLoopUI, _duckFactory);
     }
 }

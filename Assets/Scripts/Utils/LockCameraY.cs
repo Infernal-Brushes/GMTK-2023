@@ -4,11 +4,19 @@ using Cinemachine;
 using UnityEngine;
 
 [ExecuteInEditMode] [SaveDuringPlay] [AddComponentMenu("")]
-public class LockCameraY : CinemachineExtension
+public class Restrictor : CinemachineExtension
 {
     [Tooltip("Lock the camera's Y position to this value")]
-    public float m_YPosition = -20;
- 
+    [SerializeField] private float _yPosition = -20;
+    [SerializeField] private float _leftBorder = -10;
+    [SerializeField] private float _rightBorder = -10;
+
+    public void SetupRestrictions(float leftBorder, float rightBorder)
+    {
+        _leftBorder = leftBorder;
+        _rightBorder = rightBorder;
+    }
+    
     protected override void PostPipelineStageCallback(
         CinemachineVirtualCameraBase vcam,
         CinemachineCore.Stage stage, ref CameraState state, float deltaTime)
@@ -16,7 +24,8 @@ public class LockCameraY : CinemachineExtension
         if (stage == CinemachineCore.Stage.Body)
         {
             var pos = state.RawPosition;
-            pos.y = m_YPosition;
+            pos.y = _yPosition;
+            pos.x = Mathf.Clamp(pos.x, _leftBorder, _rightBorder);
             state.RawPosition = pos;
         }
     }
