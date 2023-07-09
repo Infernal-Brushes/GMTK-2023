@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameLoopUI : MonoBehaviour
 {
     public event Action Retry;
+    public event Action Play;
     
     [SerializeField] private ResultsPanelUI _losePanelUI;
     [SerializeField] private ResultsPanelUI _winPanelUI;
     [SerializeField] private AudioSource _mainMusic;
     [SerializeField] private AudioSource _gameOverSound;
     [SerializeField] private AudioSource _gameOverMusic;
+    [SerializeField] private Button _playButton;
     
     public void Initialize()
     {
@@ -18,6 +21,12 @@ public class GameLoopUI : MonoBehaviour
         _winPanelUI.Initialize();
         _losePanelUI.RetryButtonClicked.AddListener(RetryClicked);
         _winPanelUI.RetryButtonClicked.AddListener(RetryClicked);
+        _playButton.onClick.AddListener(PlayClicked);
+    }
+
+    private void PlayClicked()
+    {
+        Play?.Invoke();
     }
 
     public void ShowResultsPanel(bool won)

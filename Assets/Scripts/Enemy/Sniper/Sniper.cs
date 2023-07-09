@@ -36,6 +36,7 @@ namespace Enemy
         {
             while (true)
             {
+                _animator.StartWalking();
                 Movement.StartMoving();
                 yield return new WaitForSeconds(Random.Range(_freeRoamTimeMin, _freeRoamTimeMax));
                 Movement.StopMoving();
