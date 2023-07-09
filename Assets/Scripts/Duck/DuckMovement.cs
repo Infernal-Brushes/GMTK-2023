@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class DuckMovement : MonoBehaviour
 {
+    public event Action OnSwing;
+    
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _horizontalSpeed;
     [SerializeField] private float _swingForce;
@@ -54,6 +57,7 @@ public class DuckMovement : MonoBehaviour
         _rigidbody.AddForce(Vector2.up * _swingForce, ForceMode2D.Impulse);
         float verticalVelocity = Mathf.Clamp(_rigidbody.velocity.y, -_maxVerticalVelocity, _maxVerticalVelocity);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, verticalVelocity);
+        OnSwing?.Invoke();
     }
 
     public void ForceSwing()
