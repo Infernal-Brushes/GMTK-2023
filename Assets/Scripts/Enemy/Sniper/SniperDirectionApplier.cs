@@ -10,6 +10,7 @@ namespace Enemy
         {
             var previousScale = _graphicsContainerTransform.localScale;
             previousScale.x = Mathf.Sign(horizontalDirection) * Mathf.Abs(previousScale.x);
+            _graphicsContainerTransform.localScale = previousScale;
         }
     }
 }
