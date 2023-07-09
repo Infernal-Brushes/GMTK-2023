@@ -125,11 +125,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sniper_0
+      name: Walk 1
       rect:
         serializedVersion: 2
         x: 226
@@ -137,7 +149,7 @@ TextureImporter:
         width: 205
         height: 418
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,7 +162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sniper_1
+      name: Idle
       rect:
         serializedVersion: 2
         x: 7
@@ -158,7 +170,7 @@ TextureImporter:
         width: 205
         height: 418
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,7 +183,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sniper_2
+      name: Walk 4
       rect:
         serializedVersion: 2
         x: 472
@@ -179,7 +191,7 @@ TextureImporter:
         width: 205
         height: 418
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,7 +204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sniper_3
+      name: Walk 3
       rect:
         serializedVersion: 2
         x: 719
@@ -200,7 +212,7 @@ TextureImporter:
         width: 205
         height: 418
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,15 +225,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sniper_4
+      name: Walk 2
       rect:
         serializedVersion: 2
-        x: 939
+        x: 917
         y: 15
         width: 205
         height: 418
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,7 +246,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sniper_5
+      name: Arm
       rect:
         serializedVersion: 2
         x: 0
@@ -242,7 +254,7 @@ TextureImporter:
         width: 165
         height: 132
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -255,7 +267,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sniper_6
+      name: Weapon
       rect:
         serializedVersion: 2
         x: 173
@@ -263,7 +275,7 @@ TextureImporter:
         width: 313
         height: 125
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -286,13 +298,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sniper_0: -948364746
-      Sniper_1: 430176264
-      Sniper_4: 1528385307
-      Sniper_6: 920270563
-      Sniper_3: -497124646
-      Sniper_5: 1428079715
-      Sniper_2: -591681077
+      Walk 4: -1970077800
+      Idle: 463385743
+      Walk 1: -2110199526
+      Arm: -1825114520
+      Walk 2: 185239918
+      Weapon: -1813068490
+      Walk 3: -844564578
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -10,9 +10,12 @@ namespace Enemy
         [SerializeField] private Animator _animator;
      
         private readonly int _isWalking = Animator.StringToHash("IsWalking");
+        private readonly int _isAiming = Animator.StringToHash("ISAiming");
+        private readonly int _shoot = Animator.StringToHash("Shoot");
 
         public void StartWalking()
         {
+            _animator.SetBool(_isAiming, false);
             _animator.SetBool(_isWalking, true);
         }
 
@@ -20,17 +23,12 @@ namespace Enemy
         public void MountForAim()
         {
             _animator.SetBool(_isWalking, false);
-            Debug.Log("The sniper has mounted to aim!");
+            _animator.SetBool(_isAiming, true);
         }
 
         public void ExpressShoot()
         {
-            Debug.Log("The Sniper has made a shot!");
-        }
-
-        public void Reload()
-        {
-            Debug.Log("The Sniper has reloaded!");
+            _animator.SetTrigger(_shoot);
         }
 
     }
