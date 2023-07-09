@@ -24,7 +24,7 @@ public class Field : MonoBehaviour
     {
         var scale = _borders.transform.localScale;
         _borders.transform.localScale = new Vector3(_sizeBorder, scale.y, scale.z);
-        _gameCamera.SetRestrictions(_leftSideFirstWave, _rightSideFirstWave);
+        _gameCamera.SetRestrictions(_leftBorder, _rightBorder);
     }
 
     public void SetupTarget(Transform target)
