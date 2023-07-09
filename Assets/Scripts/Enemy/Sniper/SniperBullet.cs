@@ -1,8 +1,7 @@
-﻿using System;
-using GMTK2023.Duck;
+﻿using Duck;
 using UnityEngine;
 
-namespace Enemy.Sniper
+namespace Enemy
 {
     public class SniperBullet : MonoBehaviour
     {
@@ -14,8 +13,8 @@ namespace Enemy.Sniper
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
-                other.GetComponent<DuckHealth>().Die();
+            if (other.TryGetComponent(out DuckHealth duck))
+                duck.Die();
         }
     }
 }

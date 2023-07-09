@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections;
-using GMTK2023.Duck;
+﻿using System.Collections;
+using Duck;
 using UnityEngine;
 
 namespace Enemy.MachineGun
@@ -33,13 +32,12 @@ namespace Enemy.MachineGun
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!other.CompareTag("Player"))
-                return;
-
-            other.GetComponent<DuckHealth>().Die();
-
-            GetComponent<Collider2D>().enabled = false;
-            StartCoroutine(BlowUp());
+            if (other.TryGetComponent(out DuckHealth duck))
+            {
+                duck.Die();
+                GetComponent<Collider2D>().enabled = false;
+                StartCoroutine(BlowUp());
+            }
         }
     }
 }
