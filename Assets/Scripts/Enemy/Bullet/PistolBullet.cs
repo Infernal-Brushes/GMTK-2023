@@ -15,8 +15,8 @@ namespace Enemy
 
             for (int i = 0; i < results; i++)
             {
-               // if (_colliders[i].TryGetComponent(out DuckHealth duck))
-                   // duck.Die();
+                if (_colliders[i].TryGetComponent(out DuckHealth duck))
+                    duck.Die();
             }
         }
     }

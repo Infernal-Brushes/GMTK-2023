@@ -1,4 +1,5 @@
 using System.Collections;
+using Enemy;
 using UnityEngine;
 
 namespace GMTK2023.Enemy
@@ -21,7 +22,7 @@ namespace GMTK2023.Enemy
             yield return StartCoroutine(_aiming.PlayAiming());
             PistolBullet bullet = Instantiate(_bulletPrefab, _aiming.CurrentPoint, Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
-            bullet.Throw();
+            bullet.Explode();
         }
     }
 }

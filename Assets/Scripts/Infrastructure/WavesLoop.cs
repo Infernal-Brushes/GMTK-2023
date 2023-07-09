@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Enemy;
+using GMTK2023.Enemy;
 using Statistics;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ public class WavesLoop : MonoBehaviour
 
         if (score == 2300)
             _sniper.Initialize(_duck);
-        
+
         if (score == 1800)
         {
             //artillery
