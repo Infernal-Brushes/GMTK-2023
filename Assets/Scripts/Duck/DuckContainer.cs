@@ -1,5 +1,6 @@
 ﻿using GMTK2023.Duck;
 using GMTK2023.Enemy;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class DuckContainer : MonoBehaviour
@@ -9,6 +10,7 @@ public class DuckContainer : MonoBehaviour
     
     [SerializeField] private DuckMovement _duckMovement;
     [SerializeField] private DuckHealth _duckHealth;
+    [SerializeField] private DuckView _duckView;
 
     private InputService _inputService;
     
@@ -16,5 +18,6 @@ public class DuckContainer : MonoBehaviour
     {
         _inputService = inputService;
         _duckMovement.Initialize(_inputService);
+        _duckView.Initialize(_duckMovement);
     }
 }

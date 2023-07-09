@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909452955869596445}
   - component: {fileID: 909452955869596446}
+  - component: {fileID: 809700986087190410}
   m_Layer: 0
   m_Name: View
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 909452955869596444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 909452957466222687}
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 1811452848, guid: 876967a410f5ce845ae8c91f36303ca4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &809700986087190410
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909452955869596444}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6338d86889a0cc4c8113eaac9a93b83, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &909452957466222675
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,6 +119,7 @@ GameObject:
   - component: {fileID: 3275250155310111980}
   - component: {fileID: 909452957466222680}
   - component: {fileID: 4656584462346761480}
+  - component: {fileID: 8653515670450542609}
   m_Layer: 0
   m_Name: Duck
   m_TagString: Untagged
@@ -136,7 +158,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!50 &909452957466222685
 Rigidbody2D:
   serializedVersion: 4
@@ -172,6 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duckMovement: {fileID: 909452957466222680}
   _duckHealth: {fileID: 4656584462346761480}
+  _duckView: {fileID: 8653515670450542609}
 --- !u!114 &909452957466222680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,3 +224,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355cd6e3b76443319c1d80178f734f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8653515670450542609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909452957466222675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01976450ec04209a395938f4edff41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 809700986087190410}
