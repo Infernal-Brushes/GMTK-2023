@@ -34,14 +34,12 @@ namespace Enemy
 
         private IEnumerator Behave()
         {
-            yield return _animator.PlayFirstMovement();
-            
             while (true)
             {
                 _animator.StartWalking();
                 Movement.StartMoving();
                 yield return new WaitForSeconds(Random.Range(_freeRoamTimeMin, _freeRoamTimeMax));
-                Movement.StopMoving();
+                Movement.StopMoving(); 
                 _animator.MountForAim();
              
                 _aim.StartTracking(_duck);
