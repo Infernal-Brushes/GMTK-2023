@@ -12,6 +12,7 @@ namespace Enemy
         [SerializeField] private Transform _shoulderTransform;
         [SerializeField] private LineRenderer _lineRenderer;
         [SerializeField] private Transform _gunTipTransform;
+        [SerializeField] private SniperDirectionApplier _directionApplier;
 
         [Tooltip("Первоначальное направление руки снайпера")]
         [SerializeField] private Vector2 _armDirection;
@@ -31,13 +32,22 @@ namespace Enemy
 
             _trackingCoroutine = null;
             _lineRenderer.enabled = false;
+            _shoulderTransform.eulerAngles = Vector3.zero;
         }
 
         private IEnumerator TrackingCoroutine(Transform target)
         {
             while (true)
             {
-                _shoulderTransform.LookAt(target, _armDirection);
+               _shoulderTransform.LookAt(target, _armDirection);
+                
+                if (target.position.x > transform.position.x)
+                    _shoulderTransform.rotation = Quaternion.Euler(0, 0, -_shoulderTransform.eulerAngles.x);
+                else
+                    _shoulderTransform.rotation = Quaternion.Euler(0, 0, _shoulderTransform.eulerAngles.x);
+                
+                _directionApplier.SetDirection(-(int)Mathf.Sign(transform.position.x - target.position.x));
+
                 _lineRenderer.SetPositions(new []{ _gunTipTransform.position, target.position });
                 yield return null;
             }
