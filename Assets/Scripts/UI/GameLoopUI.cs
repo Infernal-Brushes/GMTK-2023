@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameLoopUI : MonoBehaviour
 {
     public event Action Retry;
     public event Action Play;
-    
+
+    [SerializeField] private GameObject _panelContainer;
     [SerializeField] private ResultsPanelUI _losePanelUI;
     [SerializeField] private ResultsPanelUI _winPanelUI;
+    [SerializeField] private MainMenuPanelUI _mainMenuPanelUI;
+    
     [SerializeField] private AudioSource _mainMusic;
     [SerializeField] private AudioSource _gameOverSound;
     [SerializeField] private AudioSource _gameOverMusic;
-    [SerializeField] private Button _playButton;
     
     public void Initialize()
     {
@@ -21,7 +22,7 @@ public class GameLoopUI : MonoBehaviour
         _winPanelUI.Initialize();
         _losePanelUI.RetryButtonClicked.AddListener(RetryClicked);
         _winPanelUI.RetryButtonClicked.AddListener(RetryClicked);
-        _playButton.onClick.AddListener(PlayClicked);
+        _mainMenuPanelUI.PlayPressed += PlayClicked;
     }
 
     private void PlayClicked()
@@ -29,10 +30,23 @@ public class GameLoopUI : MonoBehaviour
         Play?.Invoke();
     }
 
+    public void SetPanelVisibility(bool state)
+    {
+        _panelContainer.SetActive(state);
+    }
+
+    public void ShowMainMenu()
+    {
+        _winPanelUI.gameObject.SetActive(false);
+        _losePanelUI.gameObject.SetActive(false);
+        _mainMenuPanelUI.gameObject.SetActive(true);
+    }
+
     public void ShowResultsPanel(bool won)
     {
         _winPanelUI.gameObject.SetActive(won);
         _losePanelUI.gameObject.SetActive(!won);
+        _mainMenuPanelUI.gameObject.SetActive(false);
         _mainMusic.Stop();
         StartCoroutine(PlayGameOverMusic());
     }
