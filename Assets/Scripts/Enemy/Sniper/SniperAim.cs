@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Enemy.Sniper
+namespace Enemy
 {
     /// <summary>
     /// Этот класс отвечает за визуализацию прицеливания.

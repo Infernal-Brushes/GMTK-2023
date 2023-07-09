@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemy.Sniper
+namespace Enemy
 {
     public class SniperDirectionApplier : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-using Enemy.Sniper;
+using Enemy;
 using UnityEngine;
 
 public class SideBorderCollisionDetector : MonoBehaviour

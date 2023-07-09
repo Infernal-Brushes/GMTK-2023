@@ -1,29 +1,49 @@
 ﻿using System;
-using System.Diagnostics.Tracing;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameLoopUI : MonoBehaviour
 {
-    public Action Retry;
+    public event Action Retry;
+    public event Action Play;
     
     [SerializeField] private ResultsPanelUI _losePanelUI;
     [SerializeField] private ResultsPanelUI _winPanelUI;
-
+    [SerializeField] private AudioSource _mainMusic;
+    [SerializeField] private AudioSource _gameOverSound;
+    [SerializeField] private AudioSource _gameOverMusic;
+    [SerializeField] private Button _playButton;
+    
     public void Initialize()
     {
         _losePanelUI.Initialize();
         _winPanelUI.Initialize();
         _losePanelUI.RetryButtonClicked.AddListener(RetryClicked);
         _winPanelUI.RetryButtonClicked.AddListener(RetryClicked);
+        _playButton.onClick.AddListener(PlayClicked);
+    }
+
+    private void PlayClicked()
+    {
+        Play?.Invoke();
     }
 
     public void ShowResultsPanel(bool won)
     {
         _winPanelUI.gameObject.SetActive(won);
         _losePanelUI.gameObject.SetActive(!won);
+        _mainMusic.Stop();
+        StartCoroutine(PlayGameOverMusic());
     }
 
+    private IEnumerator PlayGameOverMusic()
+    {
+        _gameOverSound.Play();
+        yield return new WaitForSeconds(_gameOverSound.clip.length);
+        _gameOverMusic.Play();
+    }
+    
     private void RetryClicked()
     {
         Retry?.Invoke();

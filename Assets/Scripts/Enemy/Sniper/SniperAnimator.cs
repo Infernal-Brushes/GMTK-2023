@@ -1,25 +1,25 @@
 ﻿using UnityEngine;
 
-namespace Enemy.Sniper
+namespace Enemy
 {
     /// <summary>
     /// Класс содержит методы, изменяющие анимацию снайпера
     /// </summary>
     public class SniperAnimator : MonoBehaviour
     {
-        
-        // TODO: Создать хэши для полей аниматора
-
         [SerializeField] private Animator _animator;
+     
+        private readonly int _isWalking = Animator.StringToHash("IsWalking");
 
         public void StartWalking()
         {
-            Debug.Log("The Sniper is walking!");
+            _animator.SetBool(_isWalking, true);
         }
 
 
         public void MountForAim()
         {
+            _animator.SetBool(_isWalking, false);
             Debug.Log("The sniper has mounted to aim!");
         }
 
