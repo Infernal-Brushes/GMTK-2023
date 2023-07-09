@@ -24,6 +24,7 @@ public class GameLoop : MonoBehaviour
         _duckFactory = duckFactory;
         _ui.Play += StartGame;
         _ui.Retry += Retry;
+        Begin();
     }
 
     //Этот метод будет вызван 1 раз, чтобы начать игровой цикл, в нашем случае это будет показ меню, катсцена
@@ -38,12 +39,10 @@ public class GameLoop : MonoBehaviour
         _ui.SetPanelVisibility(false);
         _started = true;
         _playerDuck = _duckFactory.CreateDuck(_spawnPoint.position);
-        _wavesLoop.Initialize(_playerDuck.transform);
+        _wavesLoop.Initialize(_field, _playerDuck.transform);
         _score.Initialize(_playerDuck.Health);
         _playerDuck.Health.Died += Lose;
-        _field.SetupTarget();
-        _virtualCamera.Follow = _playerDuck.transform;
-        _virtualCamera.LookAt = _playerDuck.transform;
+        _field.SetupTarget(_playerDuck.transform);
     }
 
     private void Update()
@@ -58,9 +57,8 @@ public class GameLoop : MonoBehaviour
     private void Lose()
     {
         _started = false;
-        _ui.gameObject.SetActive(true);
+        _ui.SetPanelVisibility(true);
         _ui.ShowResultsPanel(false);
-        _playerDuck.gameObject.SetActive(false);
     }
 
     private void Retry()

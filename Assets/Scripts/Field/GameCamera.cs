@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameCamera : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera _virtualCamera;
-    [SerializeField] private Restrictor _restrictor;
+    [SerializeField] private ViewRestrictor _restrictor;
     
     private Transform _target;
     

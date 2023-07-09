@@ -4,7 +4,7 @@ using Cinemachine;
 using UnityEngine;
 
 [ExecuteInEditMode] [SaveDuringPlay] [AddComponentMenu("")]
-public class Restrictor : CinemachineExtension
+public class ViewRestrictor : CinemachineExtension
 {
     [Tooltip("Lock the camera's Y position to this value")]
     [SerializeField] private float _yPosition = -20;

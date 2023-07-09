@@ -158,7 +158,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.8
 --- !u!50 &909452957466222685
 Rigidbody2D:
   serializedVersion: 4
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 909452957466222685}
+  _collider: {fileID: 909452957466222686}
   _horizontalSpeed: 3
   _swingForce: 300
   _maxVerticalVelocity: 10

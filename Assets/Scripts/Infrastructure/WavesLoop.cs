@@ -3,6 +3,7 @@ using System.Collections;
 using Enemy;
 using GMTK2023.Enemy;
 using Statistics;
+using TMPro;
 using UnityEngine;
 
 public class WavesLoop : MonoBehaviour
@@ -12,13 +13,15 @@ public class WavesLoop : MonoBehaviour
     [SerializeField] private Tank _tank;
     [SerializeField] private BombFactory _bombFactory;
     [SerializeField] private Score _score;
+    [SerializeField] private Field _field;
     [SerializeField] private int _shotsToStartNextWave = 5;
     [SerializeField] private float _betweenPistolShotsTime;
 
     private Transform _duck;
 
-    public void Initialize(Transform duck)
+    public void Initialize(Field field, Transform duck)
     {
+        _field = field;
         _duck = duck ? duck : throw new ArgumentNullException(nameof(duck));
         _score.OnCountChanged += TryStartNextWave;
     }
@@ -50,6 +53,7 @@ public class WavesLoop : MonoBehaviour
 
     private IEnumerator StartFirstWave()
     {
+        _field.SetupFirstWaveSize();
         _pistol.Initialize(_duck);
         int shotsCount = 0;
 
@@ -59,6 +63,8 @@ public class WavesLoop : MonoBehaviour
             yield return StartCoroutine(_pistol.Shoot());
             shotsCount++;
         }
+        
+        _field.SetupFullSize();
     }
 
     private IEnumerator CreateBombs()

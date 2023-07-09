@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &18877299 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2039655267, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-  m_PrefabInstance: {fileID: 1996801748}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &49119980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,6 +1739,7 @@ MonoBehaviour:
   _tank: {fileID: 508928877}
   _bombFactory: {fileID: 1203080027}
   _score: {fileID: 1203080029}
+  _field: {fileID: 1485813804}
   _shotsToStartNextWave: 5
   _betweenPistolShotsTime: 3
 --- !u!114 &1203080031
@@ -1808,7 +1798,7 @@ MonoBehaviour:
   _gameLoop: {fileID: 1203080033}
   _duckFactory: {fileID: 1203080031}
   _gameLoopUI: {fileID: 1210316320}
-  _virtualCamera: {fileID: 18877299}
+  _field: {fileID: 1485813804}
 --- !u!4 &1203080035
 Transform:
   m_ObjectHideFlags: 0
@@ -2191,6 +2181,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383915897}
   m_CullTransparentMesh: 1
+--- !u!114 &1485813804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1485813804, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
+  m_PrefabInstance: {fileID: 1996801748}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a786d03cc299d054ebea6fb7804035c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1546102452
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,38 +2851,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 500958491, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: orthographic size
-      value: 6.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 500958492, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2039655266, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: m_YPosition
-      value: -20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2865034471763232024, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3160883457117765887, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5777856469077480167, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6191867548774643139, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6481219393190660988, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8200649717657831458, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
       propertyPath: m_Name
       value: Field
@@ -2928,14 +2897,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8200649717657831459, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8200649718786983581, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ec3d65db3d0780f44b1d1d96310707f9, type: 3}
-    - target: {fileID: 8860282717428113053, guid: ec7d6d125998ed7479a69e8c8106ce6b, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
