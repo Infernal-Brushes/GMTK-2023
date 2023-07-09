@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Enemy.MachineGun
+namespace Enemy
 {
     public class MachineGunShooter : MonoBehaviour
     {

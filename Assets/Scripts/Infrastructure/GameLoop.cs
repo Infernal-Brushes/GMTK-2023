@@ -57,6 +57,7 @@ public class GameLoop : MonoBehaviour
         _ui.gameObject.SetActive(true);
         _ui.ShowResultsPanel(false);
         _playerDuck.gameObject.SetActive(false);
+        _wavesLoop.StopWaves();
     }
 
     private void Retry()
@@ -71,5 +72,6 @@ public class GameLoop : MonoBehaviour
         _started = false;
         _ui.gameObject.SetActive(true);
         _ui.ShowResultsPanel(true);
+        _wavesLoop.StopWaves();
     }
 }

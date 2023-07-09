@@ -32,9 +32,9 @@ namespace Enemy
             Destroy(gameObject);
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collision.gameObject.TryGetComponent(out DuckHealth duckHealth))
+            if (collider.TryGetComponent(out DuckHealth duckHealth))
             {
                 duckHealth.Die();
                 GetComponent<Collider2D>().enabled = false;

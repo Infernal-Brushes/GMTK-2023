@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Enemy.MachineGun
+namespace Enemy
 {
     public class MachineGun : MonoBehaviour
     {
         [SerializeField] private MachineGunRoamer _roamer;
         [SerializeField] private MachineGunShooter _shooter;
+        [SerializeField] private EnemyAnimator _animator;
         
         [Space(10), Tooltip("Время, на протяжении которого пушка свободно передвигается")]
         [SerializeField] private float _roamingTimeMin;
@@ -17,7 +18,7 @@ namespace Enemy.MachineGun
 
         [SerializeField] private int _queuesInRowMax;
 
-        public void Initialize(DuckMovement duck, Rect screenDimensionsInWorldUnits)
+        public void Initialize(Transform duck, Rect screenDimensionsInWorldUnits)
         {
             _roamer.Initialize(duck, screenDimensionsInWorldUnits);
             StartCoroutine(Behave());
@@ -25,6 +26,8 @@ namespace Enemy.MachineGun
 
         private IEnumerator Behave()
         {
+            yield return StartCoroutine(_animator.PlayFirstMovement());
+            
             while (true)
             {
                 _roamer.StartRoaming();
