@@ -165,13 +165,13 @@ TextureImporter:
       name: Panel 1
       rect:
         serializedVersion: 2
-        x: 110
+        x: 111
         y: 201
-        width: 307
-        height: 76
+        width: 305
+        height: 75
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 25, y: 23, z: 27, w: 15}
+      border: {x: 25, y: 25, z: 25, w: 25}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -207,13 +207,13 @@ TextureImporter:
       name: Panel 2
       rect:
         serializedVersion: 2
-        x: 152
-        y: 66
-        width: 308
-        height: 78
+        x: 155
+        y: 69
+        width: 305
+        height: 75
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 40, y: 30, z: 40, w: 20}
+      border: {x: 25, y: 25, z: 25, w: 25}
       outline: []
       physicsShape: []
       tessellationDetail: 0
