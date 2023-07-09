@@ -514,8 +514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _yPosition: -20
-  _leftBorder: -10
-  _rightBorder: -10
+  _leftBorder: 0
+  _rightBorder: 0
 --- !u!1 &665432304419934410
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@
 using Duck;
 using Statistics;
 using UnityEngine;
+using UnityEngine.Playables;
 
 //Этот класс является циклом игры. У него есть 
 public class GameLoop : MonoBehaviour
@@ -9,6 +10,8 @@ public class GameLoop : MonoBehaviour
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private WavesLoop _wavesLoop;
     [SerializeField] private Score _score;
+    [SerializeField] private PlayableDirector _playableDirector;
+    [SerializeField] private GameObject _cutsceneContainer;
     
     private DuckFactory _duckFactory;
     private DuckContainer _playerDuck;
@@ -37,6 +40,15 @@ public class GameLoop : MonoBehaviour
     private void StartGame()
     {
         _ui.SetPanelVisibility(false);
+        _cutsceneContainer.SetActive(true);
+        _playableDirector.Play();
+        _playableDirector.stopped += StartGameplay;
+    }
+
+    private void StartGameplay(PlayableDirector obj)
+    {
+        _cutsceneContainer.SetActive(false);
+        _playableDirector.stopped -= StartGameplay;
         _started = true;
         _playerDuck = _duckFactory.CreateDuck(_spawnPoint.position);
         _wavesLoop.Initialize(_field, _playerDuck.transform);
