@@ -42,6 +42,11 @@ public class WavesLoop : MonoBehaviour
             StartCoroutine(CreateBombs());
     }
 
+    public void StopWaves()
+    {
+        StopAllCoroutines();
+    }
+
     private IEnumerator StartFirstWave()
     {
         _pistol.Initialize(_duck);
